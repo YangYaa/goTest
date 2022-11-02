@@ -27,13 +27,14 @@ type HttpServer struct {
 	g      *errgroup.Group
 }
 
-func NewHttp(config *GlobalConfig) *Http {
+func NewHttpConfig(config *GlobalConfig) *Http {
 	return &Http{Config: config}
 }
 
 func NewHttpServer() *HttpServer {
 	return new(HttpServer)
 }
+
 func (app *Http) Initialize() error {
 	for index, s := range app.Servers {
 		err := s.Initialize(&g, app.Config, index)

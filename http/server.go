@@ -7,10 +7,14 @@ import (
 )
 
 func HttpServer() {
+	//initial http server config
 	config := conf.GetConfigInstance()
-	httpserver := conf.NewHttp(config)
+	httpserver := conf.NewHttpConfig(config)
+	//initial http server
 	server := conf.NewHttpServer()
+	//initial http handler
 	server.HttpHandler(router.NewRouter(router.NewRoutes()))
+	//because HttpServer implement Initialize and Start function,so it can add to ServerFunc
 	httpserver.AddServer(server)
 	err := httpserver.Initialize()
 	if err != nil {
