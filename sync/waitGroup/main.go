@@ -1,11 +1,11 @@
-package main
+package waitGroup
 
 import (
 	"fmt"
 	"sync"
 )
 
-func main() {
+func WaitGroup() {
     wg := sync.WaitGroup{}
     wg.Add(100)
     for i := 0; i < 100; i++ {

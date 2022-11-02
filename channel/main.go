@@ -1,4 +1,4 @@
-package main
+package channel
 
 import (
 	"fmt"
@@ -11,7 +11,7 @@ func add_chan(){
 	time.Sleep(10*time.Second)
 	ch <- 1
 }
-func main() {
+func WaitChan() {
 	ch = make(chan int, 1)
 	go add_chan()
 
