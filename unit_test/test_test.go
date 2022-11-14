@@ -4,6 +4,7 @@ import (
 	"goTest/channel"
 	"goTest/http"
 	"goTest/http/router"
+	"goTest/json"
 	"goTest/sync/errorGroup"
 	"testing"
 )
@@ -26,4 +27,8 @@ func TestErrorGroupNotBreak(t *testing.T) {
 }
 func TestErrorGroupBreak(t *testing.T) {
 	errorGroup.ErrorGroupBreak()
+}
+
+func TestLoadJsonFile(t *testing.T) {
+	json.LoadJsonFile()
 }
