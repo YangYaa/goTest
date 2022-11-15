@@ -2,6 +2,7 @@ package unit_test
 
 import (
 	"goTest/channel"
+	"goTest/gin"
 	"goTest/http"
 	"goTest/http/router"
 	"goTest/json"
@@ -31,4 +32,8 @@ func TestErrorGroupBreak(t *testing.T) {
 
 func TestLoadJsonFile(t *testing.T) {
 	json.LoadJsonFile()
+}
+
+func TestInitialModel(t *testing.T) {
+	gin.InitialModel()
 }

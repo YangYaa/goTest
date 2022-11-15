@@ -1,7 +1,7 @@
 package model
 
 import (
-	"goTest/gin"
+	"goTest/mysql"
 )
 
 type TestDb struct {
@@ -11,7 +11,7 @@ type TestDb struct {
 
 func (p *TestDb) Query() (profileList []DbModel, err error) {
 	var list []TestDb
-	err = gin.SqlDb.Where(p).Find(&list).Error
+	err = mysql.GetMysqlInstance().Where(p).Find(&list).Error
 	for _, val := range list {
 		t := val
 		profileList = append(profileList, &t)
