@@ -6,6 +6,7 @@ import (
 	"goTest/http"
 	"goTest/http/router"
 	"goTest/json"
+	"goTest/prometheus"
 	"goTest/sync/errorGroup"
 	"testing"
 )
@@ -36,4 +37,8 @@ func TestLoadJsonFile(t *testing.T) {
 
 func TestInitialModel(t *testing.T) {
 	gin.InitialModel()
+}
+
+func TestPrometheusClient(t *testing.T) {
+	prometheus.PrometheusClient()
 }
