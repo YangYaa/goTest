@@ -30,6 +30,8 @@ func NewRoutes() Routes {
 func NewRouter(routes Routes) *gin.Engine {
 	gin.SetMode(gin.ReleaseMode)
 	router := gin.New()
+
+	//set gin log function
 	path := "/home/gin.log"
 	f, err := os.OpenFile(path, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
 	if err != nil {
@@ -37,6 +39,8 @@ func NewRouter(routes Routes) *gin.Engine {
 	}
 	gin.DefaultWriter = io.MultiWriter(f)
 	router.Use(gin.Logger(), gin.Recovery())
+
+	//range route arrary
 	for _, route := range routes {
 		switch route.Method {
 		case http.MethodGet:

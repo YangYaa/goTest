@@ -1,11 +1,8 @@
 package config
 
 import (
-	"errors"
 	"golang.org/x/sync/errgroup"
 	"log"
-	"net/http"
-	"time"
 )
 
 var (
@@ -18,21 +15,23 @@ type ServerFunc interface {
 }
 
 type Http struct {
-	Servers []ServerFunc
-	Config  *GlobalConfig
+	Servers []ServerFunc  //接口数组
+	Config  *GlobalConfig //http配置
 }
 
-type HttpServer struct {
-	server http.Server
-	g      *errgroup.Group
-}
-
+//initial http config
 func NewHttpConfig(config *GlobalConfig) *Http {
 	return &Http{Config: config}
 }
 
-func NewHttpServer() *HttpServer {
-	return new(HttpServer)
+func (app *Http) Start() {
+	var err error
+	for _, s := range app.Servers {
+		s.Start()
+	}
+	if err = g.Wait(); err != nil {
+		log.Fatal(err)
+	}
 }
 
 func (app *Http) Initialize() error {
@@ -44,47 +43,7 @@ func (app *Http) Initialize() error {
 	}
 	return nil
 }
-func (app *Http) Start() {
-	var err error
-	for _, s := range app.Servers {
-		s.Start()
-	}
-	if err = g.Wait(); err != nil {
-		log.Fatal(err)
-	}
-}
-
-func (s *HttpServer) Initialize(data ...interface{}) error {
-	group, ok := data[0].(*errgroup.Group)
-	if !ok {
-		return errors.New("Initialize Httpserver Failed")
-	}
-	appConfig, ok := data[1].(*GlobalConfig)
-	if !ok {
-		return errors.New("Initialize appConfig Failed")
-	}
-	configIndex, ok := data[2].(int)
-	if !ok {
-		return errors.New("Initialize configIndex Failed")
-	}
-	s.g = group
-	serverConfig := appConfig.Server[configIndex]
-	s.server.Addr = serverConfig.IP + ":" + serverConfig.Port
-	s.server.ReadTimeout = time.Duration(serverConfig.ReadTimeout) * time.Second
-	s.server.WriteTimeout = time.Duration(serverConfig.WriteTimeout) * time.Second
-	return nil
-}
-func (s *HttpServer) Start() {
-	s.g.Go(func() error {
-		return s.server.ListenAndServe()
-	})
-
-}
 
 func (app *Http) AddServer(s ServerFunc) {
 	app.Servers = append(app.Servers, s)
-}
-
-func (s *HttpServer) HttpHandler(r http.Handler) {
-	s.server.Handler = r
 }
