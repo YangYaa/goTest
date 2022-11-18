@@ -11,7 +11,12 @@ import (
 var (
 	//Gauge 仪表盘类型
 	opsQueued = prometheus.NewGauge(prometheus.GaugeOpts{
-		Name: "TestGauge",
+		Name: "SRG:Total",
+		Help: "TestGauge HELP",
+	})
+	//Gauge 仪表盘类型
+	opsQueued2 = prometheus.NewGauge(prometheus.GaugeOpts{
+		Name: "SRG:TotalLink",
 		Help: "TestGauge HELP",
 	})
 )
@@ -22,10 +27,18 @@ func PrometheusClient() {
 	registry := prometheus.NewRegistry()
 
 	registry.MustRegister(opsQueued)
+	registry.MustRegister(opsQueued2)
 
 	go func() {
 		for {
 			opsQueued.Add(15)
+			time.Sleep(10 * time.Second)
+		}
+	}()
+
+	go func() {
+		for {
+			opsQueued2.Add(15)
 			time.Sleep(10 * time.Second)
 		}
 	}()
