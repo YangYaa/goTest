@@ -1,6 +1,7 @@
 package unit_test
 
 import (
+	"goTest/basic"
 	"goTest/channel"
 	"goTest/gin"
 	"goTest/http"
@@ -41,4 +42,8 @@ func TestInitialModel(t *testing.T) {
 
 func TestPrometheusClient(t *testing.T) {
 	prometheus.PrometheusClient()
+}
+
+func TestStructEmbedInterface(t *testing.T) {
+	basic.StructEmbedInterface()
 }

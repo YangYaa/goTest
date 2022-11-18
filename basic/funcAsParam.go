@@ -18,7 +18,7 @@ func sub(a, b int) int {
 func Oper(fu op, a, b int) int {
 	return fu(a, b)
 }
-func funcAsParam() {
+func FuncAsParam() {
 	//在go语言中函数名可以看做是函数类型的常量，所以我们可以直接将函数名作为参数传入的函数中
 	a := Oper(add, 1, 2)
 	fmt.Println(a)
