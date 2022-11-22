@@ -23,6 +23,16 @@ func NewRoutes() Routes {
 			Pattern:     "/testRoute/test",
 			HandlerFunc: HandPutMsg,
 		},
+		{
+			Method:      "POST",
+			Pattern:     "/testRoute/test",
+			HandlerFunc: HandPostMsg,
+		},
+		{
+			Method:      "DELETE",
+			Pattern:     "/testRoute/test",
+			HandlerFunc: HandDeleteMsg,
+		},
 	}
 	return routes
 }
@@ -47,6 +57,10 @@ func NewRouter(routes Routes) *gin.Engine {
 			router.GET(route.Pattern, route.HandlerFunc)
 		case http.MethodPut:
 			router.PUT(route.Pattern, route.HandlerFunc)
+		case http.MethodPost:
+			router.POST(route.Pattern, route.HandlerFunc)
+		case http.MethodDelete:
+			router.DELETE(route.Pattern, route.HandlerFunc)
 		}
 	}
 	return router

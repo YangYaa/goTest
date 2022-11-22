@@ -12,11 +12,13 @@ import (
 	"testing"
 )
 
+//  go test -v -test.run
 func TestWaitChan(t *testing.T) {
 	channel.WaitChan()
 }
 
 func TestHttpServer(t *testing.T) {
+	gin.InitialModel()
 	http.HttpServer()
 }
 
