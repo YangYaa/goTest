@@ -6,7 +6,6 @@ import (
 )
 
 func AddHandler(c *gin.Context, profile DbModel) {
-
 	err := c.ShouldBindJSON(profile)
 	if err != nil {
 		fmt.Println("The Unmarshal JSON failed")

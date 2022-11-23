@@ -1,6 +1,7 @@
 package unit_test
 
 import (
+	"fmt"
 	"goTest/basic"
 	"goTest/channel"
 	"goTest/gin"
@@ -9,6 +10,7 @@ import (
 	"goTest/json"
 	"goTest/prometheus"
 	"goTest/sync/errorGroup"
+	"goTest/sync/mapManage"
 	"testing"
 )
 
@@ -48,4 +50,11 @@ func TestPrometheusClient(t *testing.T) {
 
 func TestStructEmbedInterface(t *testing.T) {
 	basic.StructEmbedInterface()
+}
+
+func TestAddInstance(t *testing.T) {
+	mapInstance := mapManage.NewManager()
+	mapInstance.AddInstance("test", "test.com")
+	url := mapInstance.GetInstance("test")
+	fmt.Println("The map get Instance url is ", url)
 }
