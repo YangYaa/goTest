@@ -28,6 +28,16 @@ func (p *TestDb) Query() (profileList []DbModel, err error) {
 	return profileList, err
 }
 
+func (p *TestDb) QuerySouth() (profileList []DbModel, err error) {
+	var list []TestDb
+	err = mysql.GetMysqlInstance().Where(p).Find(&list).Error
+	for _, val := range list {
+		t := val
+		profileList = append(profileList, &t)
+	}
+	return profileList, err
+}
+
 func (p *TestDb) Update() error {
 	var err error
 	if p.Id != nil {

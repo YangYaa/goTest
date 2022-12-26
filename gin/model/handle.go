@@ -5,6 +5,22 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+func GetHandler(c *gin.Context, profile DbModel) {
+	err := c.ShouldBindJSON(profile)
+	if err != nil {
+		fmt.Println("The Unmarshal JSON failed")
+		return
+	}
+	if err := profile.Check(); err != nil {
+		return
+	}
+	if err := profile.Create(); err != nil {
+		fmt.Println("Insert into database error")
+		return
+	}
+	fmt.Println("Insert into database success")
+}
+
 func AddHandler(c *gin.Context, profile DbModel) {
 	err := c.ShouldBindJSON(profile)
 	if err != nil {

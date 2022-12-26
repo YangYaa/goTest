@@ -25,6 +25,10 @@ func TestHttpServer(t *testing.T) {
 	http.HttpServer()
 }
 
+func TestMapMake(t *testing.T) {
+	basic.MapMake()
+}
+
 func TestNewRouter(t *testing.T) {
 	route := router.NewRoutes()
 	router.NewRouter(route)

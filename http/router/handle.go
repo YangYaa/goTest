@@ -5,6 +5,11 @@ import (
 	"goTest/gin/model"
 )
 
+func HandGetMsg(c *gin.Context) {
+	var v model.DbModel = new(model.TestDb)
+	model.GetHandler(c, v)
+}
+
 func HandPutMsg(c *gin.Context) {
 	var v model.DbModel = new(model.TestDb)
 	model.AddHandler(c, v)
