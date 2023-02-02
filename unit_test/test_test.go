@@ -5,12 +5,15 @@ import (
 	"goTest/basic"
 	"goTest/channel"
 	"goTest/gin"
+	"goTest/goroutine"
 	"goTest/http"
 	"goTest/http/router"
 	"goTest/json"
 	"goTest/prometheus"
+	"goTest/sync"
 	"goTest/sync/errorGroup"
 	"goTest/sync/mapManage"
+	"goTest/uploadFile"
 	"testing"
 	"time"
 )
@@ -20,6 +23,10 @@ func TestWaitChan(t *testing.T) {
 	channel.WaitChan()
 }
 
+func TestWaitUpLoadFile(t *testing.T) {
+	uploadFile.UpLoadFile()
+}
+
 func TestHttpServer(t *testing.T) {
 	gin.InitialModel()
 	http.HttpServer()
@@ -27,6 +34,14 @@ func TestHttpServer(t *testing.T) {
 
 func TestMapMake(t *testing.T) {
 	basic.MapMake()
+}
+
+func TestSliceTest(t *testing.T) {
+	basic.SliceTest()
+}
+
+func TestGoRoutineTest(t *testing.T) {
+	goroutine.GoRoutineTest()
 }
 
 func TestNewRouter(t *testing.T) {
@@ -47,6 +62,18 @@ func TestLoadJsonFile(t *testing.T) {
 
 func TestInitialModel(t *testing.T) {
 	gin.InitialModel()
+}
+
+func TestSyncOnceTest(t *testing.T) {
+	sync.SyncOnceTest()
+}
+
+func TestSyncMapSafeTest(t *testing.T) {
+	sync.SyncMapSafeTest()
+}
+
+func SyncMapUnSafeTest(t *testing.T) {
+	sync.SyncMapUnSafeTest()
 }
 
 func TestPrometheusClient(t *testing.T) {
