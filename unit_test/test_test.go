@@ -23,6 +23,14 @@ func TestWaitChan(t *testing.T) {
 	channel.WaitChan()
 }
 
+func TestGinUpload(t *testing.T) {
+	uploadFile.GinUpload()
+}
+
+func TestGinUploadClient(t *testing.T) {
+	uploadFile.GinUploadClient()
+}
+
 func TestWaitUpLoadFile(t *testing.T) {
 	uploadFile.UpLoadFile()
 }
