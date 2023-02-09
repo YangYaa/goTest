@@ -9,6 +9,7 @@ import (
 	"goTest/http"
 	"goTest/http/router"
 	"goTest/json"
+	"goTest/panicRecover"
 	"goTest/prometheus"
 	"goTest/sync"
 	"goTest/sync/errorGroup"
@@ -19,6 +20,10 @@ import (
 )
 
 //  go test -v -test.run
+func TestPanicTest(t *testing.T) {
+	panicRecover.PanicTest()
+}
+
 func TestWaitChan(t *testing.T) {
 	channel.WaitChan()
 }
