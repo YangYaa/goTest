@@ -5,6 +5,7 @@ import (
 	"goTest/basic"
 	"goTest/channel"
 	"goTest/gin"
+	"goTest/goWebSocket"
 	"goTest/goroutine"
 	"goTest/http"
 	"goTest/http/router"
@@ -20,6 +21,11 @@ import (
 )
 
 //  go test -v -test.run
+
+func TestGoWebSocket(t *testing.T) {
+	goWebSocket.GoWebSocket()
+}
+
 func TestPanicTest(t *testing.T) {
 	panicRecover.PanicTest()
 }
