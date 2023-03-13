@@ -12,6 +12,7 @@ import (
 	"goTest/json"
 	"goTest/panicRecover"
 	"goTest/prometheus"
+	"goTest/rpc"
 	"goTest/sync"
 	"goTest/sync/errorGroup"
 	"goTest/sync/mapManage"
@@ -21,6 +22,14 @@ import (
 )
 
 //  go test -v -test.run
+
+func TestRpcService(t *testing.T) {
+	rpc.RpcService()
+}
+
+func TestRpcClient(t *testing.T) {
+	rpc.RpcClient()
+}
 
 func TestGoWebSocket(t *testing.T) {
 	goWebSocket.GoWebSocket()
