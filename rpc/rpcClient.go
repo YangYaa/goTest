@@ -6,7 +6,7 @@ import (
 	"net/rpc"
 )
 
-func RpcClient() {
+func Client() {
 	// build tcp connection
 	client, err := rpc.Dial("tcp", "127.0.0.1:9091")
 	if err != nil {

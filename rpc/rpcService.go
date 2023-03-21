@@ -6,7 +6,7 @@ import (
 	"net/rpc"
 )
 
-func RpcService() {
+func Service() {
 	service := new(ServiceA)
 	rpc.Register(service)
 	l, e := net.Listen("tcp", ":9091")

@@ -17,18 +17,41 @@ import (
 	"goTest/sync/errorGroup"
 	"goTest/sync/mapManage"
 	"goTest/uploadFile"
+	"goTest/work"
 	"testing"
 	"time"
 )
 
-//  go test -v -test.run
+// go test -v -test.run
 
+func TestGoCateLog(t *testing.T) {
+	basic.CateLog()
+}
+func TestGoMap(t *testing.T) {
+	basic.MapMake()
+}
+
+func TestGoClosure(t *testing.T) {
+	basic.GoClosure()
+}
+
+func TestSimSend(t *testing.T) {
+	work.SimSendMsg()
+}
+
+func TestSimRecv(t *testing.T) {
+	work.SimRecvMsg()
+}
+
+func TestGoLog(t *testing.T) {
+	basic.Log()
+}
 func TestRpcService(t *testing.T) {
-	rpc.RpcService()
+	rpc.Service()
 }
 
 func TestRpcClient(t *testing.T) {
-	rpc.RpcClient()
+	rpc.Client()
 }
 
 func TestGoWebSocket(t *testing.T) {

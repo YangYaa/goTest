@@ -1,0 +1,6 @@
+[sctp:]2023/03/13 06:02:22.499006 /opt/0goTest/goTest/goLog/goLog.go:19: This is a test log
+[sctp:]2023/03/13 06:02:22.499290 /opt/0goTest/goTest/goLog/goLog.go:21: This is a predefine string log。
+[sctp:]2023/03/13 06:02:22.499311 /opt/0goTest/goTest/goLog/goLog.go:22: This will trigger fatal
+[sctp:]2023/03/20 02:04:11.842657 /opt/0goTest/goTest/goLog/goLog.go:19: This is a test log
+[sctp:]2023/03/20 02:04:11.842840 /opt/0goTest/goTest/goLog/goLog.go:21: This is a predefine string log。
+[sctp:]2023/03/20 02:04:11.842852 /opt/0goTest/goTest/goLog/goLog.go:22: This will trigger fatal
