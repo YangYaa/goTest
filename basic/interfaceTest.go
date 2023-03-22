@@ -4,15 +4,15 @@ import (
 	"fmt"
 )
 
-// interface definition
+// VowelsFinder interface definition
 type VowelsFinder interface {
-	//rune = int32
+	// FindVowels rune = int32
 	FindVowels() []rune
 }
 
 type MyString string
 
-// MyString implements VowelsFinder
+// FindVowels MyString implements VowelsFinder
 func (ms MyString) FindVowels() []rune {
 	var vowels []rune
 	for _, rune := range ms {
@@ -39,26 +39,36 @@ func InterFaceTest() {
 	i := 55
 	describe(i)
 	//:Type = int, value = 55
-	strt := struct {
+	str := struct {
 		name string
 	}{
 		name: "Naveen R",
 	}
-	describe(strt)
+	describe(str)
 	//:Type = struct { name string }, value = {Naveen R}
 
 	//3.type assert
 	var t interface{} = 56
 	assert(t)
+	//:x is a int is 56
 	var u interface{} = "Steven Paul"
 	assert(u)
+	//:x is a string，value is Steven Paul
 }
 
 func describe(i interface{}) {
 	fmt.Printf("Type = %T, value = %v\n", i, i)
 }
 
-func assert(i interface{}) {
-	v, ok := i.(int)
-	fmt.Println(v, ok)
+func assert(x interface{}) {
+	switch v := x.(type) {
+	case string:
+		fmt.Printf("x is a string，value is %v\n", v)
+	case int:
+		fmt.Printf("x is a int is %v\n", v)
+	case bool:
+		fmt.Printf("x is a bool is %v\n", v)
+	default:
+		fmt.Println("unsupport type！")
+	}
 }
