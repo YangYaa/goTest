@@ -24,6 +24,21 @@ import (
 
 // go test -v -test.run
 
+func TestGoReflect(t *testing.T) {
+	basic.ReflectTest()
+}
+func TestGoArray(t *testing.T) {
+	basic.ArrayTest()
+}
+
+func TestGoInterFace(t *testing.T) {
+	basic.InterFaceTest()
+}
+
+func TestGoPointer(t *testing.T) {
+	basic.PointerTest()
+}
+
 func TestGoCateLog(t *testing.T) {
 	basic.CateLog()
 }
