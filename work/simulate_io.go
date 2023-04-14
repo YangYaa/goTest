@@ -11,9 +11,9 @@ type Message struct {
 	Message  string `json:"message"`
 }
 
-func SimSendIo(sendcontent []byte) {
+func SimSendIo(sendcontent []byte, ipaddr string) {
 
-	conn, err := net.Dial("tcp", "127.0.0.1:9091")
+	conn, err := net.Dial("tcp", ipaddr)
 	if err != nil {
 		fmt.Println("Error connecting:", err.Error())
 		return
@@ -23,7 +23,7 @@ func SimSendIo(sendcontent []byte) {
 	conn.Write(sendcontent)
 }
 
-func SimReceiveIo() (recvcontent []byte) {
+func SimReceiveIo() (recContent []byte) {
 	conn, err := net.Listen("tcp", ":9091")
 	if err != nil {
 		fmt.Println("Error listening:", err.Error())
@@ -43,7 +43,7 @@ func SimReceiveIo() (recvcontent []byte) {
 			fmt.Println("Error reading:", err.Error())
 			return
 		}
-		recvcontent = buf[:n]
+		recContent = buf[:n]
 		return
 	}
 }

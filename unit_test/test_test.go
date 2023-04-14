@@ -2,9 +2,11 @@ package unit_test
 
 import (
 	"fmt"
+	"goTest/3rd/gorilla"
 	"goTest/basic"
 	"goTest/channel"
 	"goTest/gin"
+	"goTest/goHeap"
 	"goTest/goWebSocket"
 	"goTest/goroutine"
 	"goTest/http"
@@ -23,6 +25,69 @@ import (
 )
 
 // go test -v -test.run
+
+func TestGoFlag(t *testing.T) {
+	basic.GoFlagTest()
+}
+
+func TestGorillaServer(t *testing.T) {
+	gorilla.GorillaServer()
+}
+
+func TestGorillaClient(t *testing.T) {
+	gorilla.GorillaClient()
+}
+
+func TestWebWS(t *testing.T) {
+	goWebSocket.GoWebSocket2()
+	//goWebSocket.NewGinServer("/kong/test")
+}
+
+func TestNewGinServer(t *testing.T) {
+	goWebSocket.GinMain()
+	//goWebSocket.NewGinServer("/kong/test")
+}
+
+func TestGoHeap2(t *testing.T) {
+	goHeap.GoHeapTest2()
+}
+
+func TestGoHeap(t *testing.T) {
+	goHeap.GoHeapTest()
+}
+
+func TestChan(t *testing.T) {
+	basic.UnbuffChannel()
+}
+
+func TestGoRoutine1(t *testing.T) {
+	basic.GoRoutineTest()
+	basic.GoRoutineTest2()
+}
+
+func TestCallBackFunction2(t *testing.T) {
+	basic.CallBackFunction2Test()
+}
+
+func TestCallBackFunction(t *testing.T) {
+	basic.CallBackFunctionTest()
+}
+
+func TestTcpDecodeClient(t *testing.T) {
+	basic.TcpClientEncodeTest()
+}
+
+func TestTcpEncodeServer(t *testing.T) {
+	basic.TcpServerDecodeTest()
+}
+
+func TestTcpClient(t *testing.T) {
+	basic.TcpClientTest()
+}
+
+func TestTcpServer(t *testing.T) {
+	basic.TcpServerTest()
+}
 
 func TestGoReflect(t *testing.T) {
 	basic.ReflectTest()

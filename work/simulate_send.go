@@ -16,5 +16,5 @@ func SimSendMsg() {
 		return
 	}
 	//用户将定义好的content消息提供给send接口发出
-	SimSendIo(content)
+	SimSendIo(content, "127.0.0.1:9091")
 }
