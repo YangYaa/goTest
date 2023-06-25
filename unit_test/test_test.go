@@ -7,6 +7,7 @@ import (
 	"goTest/channel"
 	"goTest/gin"
 	"goTest/goHeap"
+	"goTest/goIcmp"
 	"goTest/goWebSocket"
 	"goTest/goroutine"
 	"goTest/http"
@@ -25,6 +26,10 @@ import (
 )
 
 // go test -v -test.run
+
+func TestIcmp(t *testing.T) {
+	goIcmp.IcmpTest()
+}
 
 func TestGoFlag(t *testing.T) {
 	basic.GoFlagTest()
@@ -159,7 +164,7 @@ func TestWaitUpLoadFile(t *testing.T) {
 }
 
 func TestHttpServer(t *testing.T) {
-	gin.InitialModel()
+	//gin.InitialModel()
 	http.HttpServer()
 }
 

@@ -33,6 +33,11 @@ func NewRoutes() Routes {
 			Pattern:     "/testRoute/test",
 			HandlerFunc: HandDeleteMsg,
 		},
+		{
+			Method:      "GET",
+			Pattern:     "/downloadFiles",
+			HandlerFunc: DownloadFileService,
+		},
 	}
 	return routes
 }

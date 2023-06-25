@@ -46,12 +46,13 @@ func NewGinServer(prefix string) *Server {
 }
 
 func (s *Server) AddService(uri string, routes Route) *Server {
+	//add base url to gin.Engine
 	g := s.Group(s.prefix).Group(uri)
 	for uri2, group := range routes {
 		for method, callback := range group {
 			switch method {
 			case GET:
-				g.GET(uri2, callback)
+				g.GET(uri2, callback) //like wsLog callBackFunction
 			case POST:
 				g.POST(uri2, callback)
 			case HEAD, PUT, PATCH, DELETE, CONNECT, OPTIONS, TRACE:
@@ -59,6 +60,16 @@ func (s *Server) AddService(uri string, routes Route) *Server {
 			}
 		}
 	}
+	return s
+}
+
+func (s *Server) AddStatic(relativePath, dir string) *Server {
+	s.Group(s.prefix).Static(relativePath, dir)
+	return s
+}
+
+func (s *Server) AddStaticFile(relativePath, dir string) *Server {
+	s.Group(s.prefix).StaticFile(relativePath, dir)
 	return s
 }
 

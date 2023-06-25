@@ -33,5 +33,10 @@ func RunWsGinServer(wg *sync.WaitGroup) error {
 	defer wg.Done()
 	var port uint16
 	port = 9990
-	return NewGinServer("/kong/test").AddService("wstest", wsTest).AddService("logup", southRoute).Run("192.168.50.211", port)
+	return NewGinServer("/kong/test").
+		AddStatic("html", "/opt/html/").
+		AddStaticFile("log", "/opt/test.log").
+		AddService("wstest", wsTest).
+		AddService("logup", southRoute).
+		Run("192.168.50.211", port)
 }
